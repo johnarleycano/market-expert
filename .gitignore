@@ -1,0 +1,9 @@
+# Directorios
+.vscode/
+archivos/
+frontend/
+application/logs/
+application/config/development/
+application/config/production/
+application/vendor/
+index.php
