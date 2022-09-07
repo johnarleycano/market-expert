@@ -1,0 +1,17 @@
+-- 20220906 Tabla de usuarios
+CREATE TABLE `market_experts`.`usuarios`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `activo` tinyint(1) NULL DEFAULT 1,
+  `nombres` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `apellidos` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `clave` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `documento_numero` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `fecha_creacion` datetime NULL DEFAULT NULL,
+  `login` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `perfil_id` int(11) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `perfil_id`(`perfil_id`) USING BTREE,
+  INDEX `activo`(`activo`) USING BTREE,
+  CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`perfil_id`) REFERENCES `market_experts`.`perfiles` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;

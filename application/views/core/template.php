@@ -11,30 +11,35 @@
 		<input type="hidden" id="base_url" value="<?php echo base_url(); ?>">
 		<input type="hidden" id="site_url" value="<?php echo site_url(); ?>">
 
-		<div class="container-scroller">
-			<!-- Menú superior -->
-			<?php $this->load->view('core/menu_superior'); ?>
+		<!-- Si ya inició sesión -->
+		<?php if($this->session->userdata('usuario_id')) { ?>
+			<div class="container-scroller">
+				<!-- Menú superior -->
+				<?php $this->load->view('core/menu_superior'); ?>
 
-			<div class="container-fluid page-body-wrapper">
-				<?php
-				// Configurador de temas
-				$this->load->view('core/colores');
+				<div class="container-fluid page-body-wrapper">
+					<?php
+					// Configurador de temas
+					$this->load->view('core/colores');
 
-				// Menú lateral
-				$this->load->view('core/menu_lateral');
-				?>
+					// Menú lateral
+					$this->load->view('core/menu_lateral');
+					?>
 
-				<div class="main-panel">
-					<!-- Contenido principal -->
-					<div class="content-wrapper" id="contenedor_principal">
-						<?php $this->load->view($contenido_principal); ?>
+					<div class="main-panel">
+						<!-- Contenido principal -->
+						<div class="content-wrapper" id="contenedor_principal">
+							<?php $this->load->view($contenido_principal); ?>
+						</div>
+
+						<!-- Pié de página -->
+						<?php $this->load->view('core/footer'); ?>
 					</div>
-
-					<!-- Pié de página -->
-					<?php $this->load->view('core/footer'); ?>
 				</div>
 			</div>
-		</div>
+		<?php } else {
+			$this->load->view($contenido_principal);
+		} ?>
 		
 		<script src="<?php echo base_url(); ?>vendors/js/vendor.bundle.base.js"></script>
 		<script src="<?php echo base_url(); ?>vendors/chart.js/Chart.min.js"></script>

@@ -18,6 +18,9 @@ class Inicio extends MY_Controller {
      */
     function __construct() {
         parent::__construct();
+        
+        // Si no se ha iniciado sesión, se redirecciona
+        if(!$this->session->userdata('usuario_id')) redirect('sesion/cerrar');
     }
 
     function index() {
@@ -30,3 +33,5 @@ class Inicio extends MY_Controller {
         $this->load->view('core/template', $this->data);
     }
 }
+/* Fin del archivo Inicio.php */
+/* Ubicación: ./application/controllers/Inicio.php */
