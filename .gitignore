@@ -6,4 +6,4 @@ application/logs/
 application/config/development/
 application/config/production/
 application/vendor/
-index.php
+/index.php
