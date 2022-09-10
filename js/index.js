@@ -72,7 +72,7 @@ confirmar = (tipo, mensaje) => {
 
 consulta = (tipo, datos, notificacion = true) => {
     let accion = tipo.split('/')[1]
-    let respuesta = promesa(`${$('#site_url').val()}${tipo}`, datos)
+    let respuesta = promesa(`${$('#site_url').val()}interfaces/${tipo}`, datos)
         .then(resultado => {
             switch (accion) {
                 case "actualizar":

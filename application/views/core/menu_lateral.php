@@ -157,47 +157,44 @@
 		</li>
 		<li class="nav-item nav-category">Bloque 1</li>
 		<li class="nav-item">
-			<a class="nav-link" data-bs-toggle="offcanvas" href="#" aria-expanded="false" aria-controls="ui-basic" onCLick="javascript:cargarInterfaz('inicio/index')">
-				<i class="menu-icon mdi mdi-car"></i>
-				<span class="menu-title">Submenu</span>
-			</a>
-		</li>
-		<li class="nav-item">
-			<a class="nav-link" data-bs-toggle="offcanvas" href="#" aria-expanded="false" aria-controls="ui-basic" onCLick="javascript:cargarInterfaz('inicio/index')">
+			<a class="nav-link" data-bs-toggle="offcanvas" href="#" aria-expanded="false" aria-controls="ui-basic" onCLick="javascript:cargarInterfaz('clientes/index')">
 				<i class="menu-icon mdi mdi-account-multiple-outline"></i>
-				<span class="menu-title">Submenu</span>
+				<span class="menu-title">Clientes</span>
 			</a>
 		</li>
-		<li class="nav-item">
-			<a class="nav-link" data-bs-toggle="offcanvas" href="#" aria-expanded="false" aria-controls="ui-basic" onCLick="javascript:cargarInterfaz('inicio/index')">
-				<i class="menu-icon mdi mdi-bus"></i>
-				<span class="menu-title">Submenu</span>
-			</a>
-		</li>
-		<li class="nav-item">
-			<a class="nav-link" data-bs-toggle="offcanvas" href="#" aria-expanded="false" aria-controls="ui-basic" onCLick="javascript:cargarInterfaz('inicio/index')">
-				<i class="menu-icon mdi mdi-clipboard-text"></i>
-				<span class="menu-title">Submenu</span>
-			</a>
-		</li>
-		<li class="nav-item nav-category">CONFIGURACIÓN</li>
-		<li class="nav-item">
-			<a class="nav-link" data-bs-toggle="offcanvas" href="#" aria-expanded="false" aria-controls="ui-basic" onCLick="javascript:cargarInterfaz('inicio/index')">
-				<i class="menu-icon mdi mdi-playlist-check"></i>
-				<span class="menu-title">Submenu</span>
-			</a>
-		</li>
-		<li class="nav-item">
-			<a class="nav-link" data-bs-toggle="offcanvas" href="#" aria-expanded="false" aria-controls="ui-basic" onCLick="javascript:cargarInterfaz('Submenu/index')">
-				<i class="menu-icon mdi mdi-car-multiple"></i>
-				<span class="menu-title">Submenu</span>
-			</a>
-		</li>
-		<li class="nav-item">
-			<a class="nav-link" data-bs-toggle="offcanvas" href="#" aria-expanded="false" aria-controls="ui-basic" onCLick="javascript:cargarInterfaz('inicio/index')">
-				<i class="menu-icon ti-layout-cta-center"></i>
-				<span class="menu-title">Submenu</span>
-			</a>
-		</li>
+
+		<?php if(ENVIRONMENT == 'production') { ?>
+			<li class="nav-item">
+				<a class="nav-link" data-bs-toggle="offcanvas" href="#" aria-expanded="false" aria-controls="ui-basic" onCLick="javascript:cargarInterfaz('inicio/index')">
+					<i class="menu-icon mdi mdi-bus"></i>
+					<span class="menu-title">Submenu</span>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" data-bs-toggle="offcanvas" href="#" aria-expanded="false" aria-controls="ui-basic" onCLick="javascript:cargarInterfaz('inicio/index')">
+					<i class="menu-icon mdi mdi-clipboard-text"></i>
+					<span class="menu-title">Submenu</span>
+				</a>
+			</li>
+			<li class="nav-item nav-category">CONFIGURACIÓN</li>
+			<li class="nav-item">
+				<a class="nav-link" data-bs-toggle="offcanvas" href="#" aria-expanded="false" aria-controls="ui-basic" onCLick="javascript:cargarInterfaz('inicio/index')">
+					<i class="menu-icon mdi mdi-playlist-check"></i>
+					<span class="menu-title">Submenu</span>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" data-bs-toggle="offcanvas" href="#" aria-expanded="false" aria-controls="ui-basic" onCLick="javascript:cargarInterfaz('Submenu/index')">
+					<i class="menu-icon mdi mdi-car-multiple"></i>
+					<span class="menu-title">Submenu</span>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" data-bs-toggle="offcanvas" href="#" aria-expanded="false" aria-controls="ui-basic" onCLick="javascript:cargarInterfaz('inicio/index')">
+					<i class="menu-icon ti-layout-cta-center"></i>
+					<span class="menu-title">Submenu</span>
+				</a>
+			</li>
+		<?php } ?>
 	</ul>
 </nav>
