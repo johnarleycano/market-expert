@@ -17,6 +17,8 @@ foreach($registros as $cliente) {
             <i class='puntero menu-icon mdi mdi-phone' title='Teléfono'></i>&nbsp;$cliente->telefono
             <i class='puntero menu-icon mdi mdi-mail' title='Teléfono'></i>&nbsp;$cliente->email
             <br>
+
+            <span class='puntero' onClick='javascript:cargarInterfaz(`clientes/bitacora/index`, `contenedor_principal`, {cliente_id: $cliente->id})'><i class='menu-icon mdi mdi-library-books' title='Registros en bitácora'></i>&nbsp;$cliente->bitacoras</span>
         ";
         ?>
     </p>

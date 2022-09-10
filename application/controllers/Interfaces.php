@@ -82,6 +82,10 @@ class Interfaces extends MY_Controller {
             case 'clientes':
                 print json_encode(['resultado' => $this->clientes_model->crear($tipo, $datos)]);
             break;
+
+            case 'clientes_bitacora':
+                print json_encode(['resultado' => $this->clientes_model->crear($tipo, $datos)]);
+            break;
         }
     }
 }
