@@ -29,7 +29,7 @@
 <script type="text/javascript">
     guardarBitacora = async() => {
         let camposObligatorios = [
-            $('#descripcion'),
+            $('#clasificacion'),
         ]
 
         if (!validarCamposObligatorios(camposObligatorios)) return false
@@ -38,6 +38,7 @@
             tipo: 'clientes_bitacora',
             cliente_id: <?php echo $datos['cliente_id']; ?>,
             descripcion: $('#descripcion').val(),
+            cliente_bitacora_clasificacion_id: $('#clasificacion').val(),
         }
 
         await consulta('crear', datos)

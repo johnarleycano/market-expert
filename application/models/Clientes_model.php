@@ -47,10 +47,14 @@ Class Clientes_model extends CI_Model{
                 "SELECT
                     cb.id,
                     cb.fecha_creacion,
-                    cb.descripcion
+                    cb.descripcion,
+                    CONCAT(u.nombres, ' ', u.apellidos) usuario,
+                    cbc.nombre clasificacion
                 FROM
                     clientes_bitacora AS cb
-                    INNER JOIN clientes AS c ON cb.cliente_id = c.id 
+                    INNER JOIN clientes AS c ON cb.cliente_id = c.id
+                    INNER JOIN usuarios AS u ON cb.usuario_id = u.id
+                    LEFT JOIN clientes_bitacora_clasificaciones AS cbc ON cb.cliente_bitacora_clasificacion_id = cbc.id
                 $filtros_where
                 $filtros_having
                 ORDER BY

@@ -6,7 +6,17 @@
 <div class="modal-body">
     <form class="row">
         <div class="col-12">
-            <label for="descripcion" class="form-label">Descripción</label>
+            <label for="clasificacion" class="form-label">Clasificación</label>
+            <select id="clasificacion" class="form-select form-select-sm">
+                <option selected disabled>Seleccione</option>
+                <?php foreach ($this->configuracion_model->obtener('clientes_bitacora_clasificaciones') as $clasificacion) { ?>
+                    <option value="<?php echo $clasificacion->id; ?>"><?php echo $clasificacion->nombre; ?></option>
+                <?php } ?>
+            </select>
+        </div>
+
+        <div class="col-12">
+            <label for="descripcion" class="form-label">Observación</label>
             <textarea class="form-control form-control-lg" id="descripcion" rows="6"></textarea>
         </div>
     </form>

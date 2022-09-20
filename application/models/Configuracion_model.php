@@ -3,6 +3,14 @@ Class Configuracion_model extends CI_Model{
     function obtener($tipo, $datos = null)
 	{
         switch($tipo) {
+            case 'clientes_bitacora_clasificaciones':
+                return $this->db
+                    ->order_by('nombre')
+                    ->get($tipo)
+                    ->result()
+                ;
+            break;
+
             case 'paises':
                 return $this->db
                     ->get($tipo)

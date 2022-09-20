@@ -10,10 +10,12 @@ if(count($registros) == 0) echo '<li class="list-group-item">No se encontraron r
 
 foreach($registros as $bitacora) {
 ?>
-    <h4 class="card-title puntero"><?php echo $bitacora->descripcion; ?></h4>
+    <h4 class="card-title puntero"><?php echo $bitacora->clasificacion; ?></h4>
     <p class="card-description">
         <?php
         echo "
+            <i class='puntero menu-icon mdi mdi-format-list-bulleted-type' title='Fecha'></i>&nbsp;$bitacora->descripcion
+            <i class='puntero menu-icon mdi mdi-account' title='Fecha'></i>&nbsp;$bitacora->usuario
             <i class='puntero menu-icon mdi mdi-calendar' title='Fecha'></i>&nbsp;$bitacora->fecha_creacion
             <br>
         ";
