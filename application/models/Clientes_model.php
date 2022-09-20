@@ -88,6 +88,9 @@ Class Clientes_model extends CI_Model{
                 }
 
                 if(isset($datos['id'])) $filtros_where .= " AND c.id = {$datos['id']} ";
+                
+                // Si no es administrador, podrá ver los clientes asignados al sistema y a él mismo
+                if($this->session->userdata('administrador') == '0') $filtros_where .= " AND (c.usuario_asignado_id = 1 OR c.usuario_asignado_id = {$this->session->userdata('usuario_id')})";
 
                 $sql = 
                 "SELECT
@@ -100,6 +103,7 @@ Class Clientes_model extends CI_Model{
                 $filtros_where
                 $filtros_having
                 ORDER BY
+                    fecha_creacion DESC,
                     nombres
                 $contador
                 ";

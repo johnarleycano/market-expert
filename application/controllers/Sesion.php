@@ -58,7 +58,7 @@ class Sesion extends MY_Controller {
 			'estado' => $usuario->activo,
 			'nombres' => $usuario->nombres,
 			'apellidos' => $usuario->apellidos,
-			// 'administrador' => $usuario->administrador,
+			'administrador' => $usuario->administrador,
 			// 'perfil' => $usuario->perfil,
 		];
 
