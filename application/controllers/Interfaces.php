@@ -19,7 +19,8 @@ class Interfaces extends MY_Controller {
         // $this->jwt = $this->verificar_sesion([Roles::ACCEDER]);
 
         $this->load->model([
-            'clientes_model'
+            'clientes_model',
+            'usuarios_model'
         ]);
     }
 
@@ -54,6 +55,25 @@ class Interfaces extends MY_Controller {
             case 'clientes':
                 $resultado = $this->clientes_model->actualizar($tipo, $id, $datos);
             break;
+
+            case 'usuarios':
+                $nombre_usuario = $datos['login'];
+                $clave = $datos['clave'];
+                $clave_encriptada = $this->gestionar_clave('encriptacion', $nombre_usuario, $clave);
+
+                // Si no trae clave para cambiar
+                if ($datos["clave"] == "0") {
+                    // Se elimina el campo del arreglo
+                    unset($datos["clave"]);
+                }else{
+                    // Se encripta la clave
+                    $datos["clave"] = $clave_encriptada;
+
+                    // Se cambia la clave en la sesión
+                    $this->session->set_userdata('clave', $clave_encriptada);
+                }
+                $resultado = $this->usuarios_model->actualizar($tipo, $id, $datos);
+            break;
         }
 
         print json_encode($resultado);
@@ -85,6 +105,16 @@ class Interfaces extends MY_Controller {
 
             case 'clientes_bitacora':
                 print json_encode(['resultado' => $this->clientes_model->crear($tipo, $datos)]);
+            break;
+
+            case 'usuarios':
+                $nombre_usuario = $datos['login'];
+                $clave = $datos['clave'];
+                $clave_encriptada = $this->gestionar_clave('encriptacion', $nombre_usuario, $clave);
+                $datos["clave"] = $clave_encriptada;
+
+                unset($datos['usuario_id']);
+                print json_encode(['resultado' => $this->usuarios_model->crear($tipo, $datos)]);
             break;
         }
     }

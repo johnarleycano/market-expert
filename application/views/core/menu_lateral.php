@@ -163,6 +163,13 @@
 			</a>
 		</li>
 
+		<li class="nav-item">
+			<a class="nav-link" data-bs-toggle="offcanvas" href="#" aria-expanded="false" aria-controls="ui-basic" onCLick="javascript:cargarInterfaz('usuarios/index')">
+				<i class="menu-icon mdi mdi-account-group"></i>
+				<span class="menu-title">Usuarios</span>
+			</a>
+		</li>
+
 		<?php if(ENVIRONMENT == 'production') { ?>
 			<li class="nav-item">
 				<a class="nav-link" data-bs-toggle="offcanvas" href="#" aria-expanded="false" aria-controls="ui-basic" onCLick="javascript:cargarInterfaz('inicio/index')">
