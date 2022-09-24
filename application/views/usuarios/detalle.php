@@ -47,11 +47,19 @@ if (isset($datos['id'])) {
             <input type="password" class="form-control" id="clave2">
         </div>
 
-        <div class="col-12">
+        <div class="col-6">
             <label for="estado" class="form-label">Estado <b class="text-danger">*</b></label>
             <select id="estado" class="form-select form-select-sm">
                 <option value="1">Activo</option>
                 <option value="0">Inactivo</option>
+            </select>
+        </div>
+
+        <div class="col-6">
+            <label for="administrador" class="form-label">Administrador <b class="text-danger">*</b></label>
+            <select id="administrador" class="form-select form-select-sm">
+                <option value="0">No</option>
+                <option value="1">Sí</option>
             </select>
         </div>
     </form>
@@ -66,6 +74,7 @@ if (isset($datos['id'])) {
     <script type="text/javascript">
         $().ready(() => {
             $('#estado').val(<?php echo $usuario->activo; ?>)
+            $('#administrador').val(<?php echo $usuario->administrador; ?>)
         })
     </script>
 <?php } ?>

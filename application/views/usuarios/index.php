@@ -52,7 +52,8 @@
             email: $('#email').val(),
             login: $('#login').val(),
             clave: password,
-            activo: $('#estado').val()
+            activo: $('#estado').val(),
+            administrador: $('#administrador').val(),
         }
 
         if(!usuarioId) {
