@@ -21,13 +21,13 @@ cargarInterfaz = (vista = 'index', contenedor = 'contenedor_principal', datos = 
 
 cargarMasDatos = (vista, contenedor = 'datos') => {
     // Se aumenta el contador
-    localStorage.pesv_contador = (localStorage.pesv_contador)
-    ? parseInt(localStorage.pesv_contador) + parseInt($('#cantidad_datos').val())
+    localStorage.marketExperts_contador = (localStorage.marketExperts_contador)
+    ? parseInt(localStorage.marketExperts_contador) + parseInt($('#cantidad_datos').val())
     : 0
 
     let datos = {
         vista: vista,
-        contador: parseInt(localStorage.pesv_contador),
+        contador: parseInt(localStorage.marketExperts_contador),
         busqueda: $("#buscar").val(),
     }
 
