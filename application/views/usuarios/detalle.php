@@ -37,12 +37,12 @@ if (isset($datos['id'])) {
             <input type="text" class="form-control" id="login" value="<?php if (isset($usuario)) echo $usuario->login; ?>">
         </div>
 
-        <div class="col-12">
+        <div class="col-6">
             <label for="clave1" class="form-label">Clave <b class="text-danger">*</b></label>
             <input type="password" class="form-control" id="clave1">
         </div>
 
-        <div class="col-12">
+        <div class="col-6">
             <label for="clave2" class="form-label">Repita la clave <b class="text-danger">*</b></label>
             <input type="password" class="form-control" id="clave2">
         </div>

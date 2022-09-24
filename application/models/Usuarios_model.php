@@ -16,7 +16,6 @@ Class Usuarios_model extends CI_Model{
     function obtener($tipo, $datos = null)
     {
         switch($tipo) {
-
             case 'usuarios':
                 $contador = (isset($datos['contador'])) ? "LIMIT {$datos['contador']}, 20" : '' ;
                 $filtros_where = "WHERE u.id";
