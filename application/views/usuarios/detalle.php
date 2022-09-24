@@ -39,12 +39,12 @@ if (isset($datos['id'])) {
 
         <div class="col-12">
             <label for="clave1" class="form-label">Clave <b class="text-danger">*</b></label>
-            <input type="password" class="form-control" id="clave1" value="<?php if (isset($usuario)) echo $usuario->clave; ?>">
+            <input type="password" class="form-control" id="clave1">
         </div>
 
         <div class="col-12">
             <label for="clave2" class="form-label">Repita la clave <b class="text-danger">*</b></label>
-            <input type="password" class="form-control" id="clave2" value="<?php if (isset($usuario)) echo $usuario->clave; ?>">
+            <input type="password" class="form-control" id="clave2">
         </div>
 
         <div class="col-12">

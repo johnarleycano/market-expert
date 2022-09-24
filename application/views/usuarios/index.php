@@ -20,8 +20,6 @@
     guardarUsuario = async() => {
         let usuarioId = $('#usuario_id').val()
         password = "0";
-        let clave1 = $('#clave1')
-        let clave2 = $('#clave2')
 
         let camposObligatorios = [
             $('#nombres'),
@@ -29,45 +27,43 @@
             $('#documento'),
             $('#email'),
             $('#login'),
-            clave1,
-            clave2,
             $('#estado')
         ]
 
-        if (!validarCamposObligatorios(camposObligatorios)){
-            return false
-        } else{
-            if ($.trim(clave1.val()).length > 0) {
-                if (clave1.val() !== clave2.val()) {
-                    mostrarNotificacion('error', 'No se puede crear el usuario todavía, Las claves no coinciden. Verifíquelas nuevamente.', 10000)
-                    
-                    return false;
-                }else{
-                    password = clave1.val();
-                }
+        // Si digitaron algo en la clave 1
+        if ($.trim($('#clave1').val()).length > 0 || $.trim($('#clave2').val()).length > 0) {
+            // Si las claves no coinciden
+            if ($('#clave1').val() !== $('#clave2').val()) {
+                mostrarNotificacion('alerta', 'No se puede crear el usuario todavía, Las claves no coinciden. Verifíquelas nuevamente.', 10000)
+                
+                return false
             }
-
-            let datos = {
-                tipo: 'usuarios',
-                nombres: $('#nombres').val(),
-                apellidos: $('#apellidos').val(),
-                documento_numero: $('#documento').val(),
-                email: $('#email').val(),
-                login: $('#login').val(),
-                clave: password,
-                activo: $('#estado').val()
-            }
-
-            if(!usuarioId) {
-                await consulta('crear', datos)
-            } else {
-                datos.id = usuarioId
-                await consulta('actualizar', datos)
-            }
-
-            cerrarModal()
-            listarUsuarios()
+            
+            password = $('#clave1').val()
         }
+
+        if (!validarCamposObligatorios(camposObligatorios)) return false
+
+        let datos = {
+            tipo: 'usuarios',
+            nombres: $('#nombres').val(),
+            apellidos: $('#apellidos').val(),
+            documento_numero: $('#documento').val(),
+            email: $('#email').val(),
+            login: $('#login').val(),
+            clave: password,
+            activo: $('#estado').val()
+        }
+
+        if(!usuarioId) {
+            await consulta('crear', datos)
+        } else {
+            datos.id = usuarioId
+            await consulta('actualizar', datos)
+        }
+
+        cerrarModal()
+        listarUsuarios()
     }
 
     listarUsuarios = () => {
