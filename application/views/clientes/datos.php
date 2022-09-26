@@ -9,7 +9,9 @@ if(count($registros) == 0) echo '<li class="list-group-item">No se encontraron c
 
 foreach($registros as $cliente) {
 ?>
-    <h4 class="card-title puntero" onClick="javascript:cargarInterfaz('clientes/detalle', 'contenedor_modal', {id: <?php echo $cliente->id; ?>}, 'modal')"><?php echo $cliente->nombres; ?></h4>
+    <h4 class="card-title puntero" onClick="javascript:cargarInterfaz('clientes/detalle', 'contenedor_modal', {id: <?php echo $cliente->id; ?>}, 'modal')">
+        <?php echo $cliente->nombres; ?> <span class="card-description"><?php echo $cliente->ultima_clasificacion; ?></span>
+    </h4>
     <p class="card-description">
         <?php
         echo "
@@ -19,7 +21,7 @@ foreach($registros as $cliente) {
             <i class='puntero menu-icon mdi mdi-calendar' title='Teléfono'></i>&nbsp;$cliente->fecha_creacion
             <br>
 
-            <span class='puntero' onClick='javascript:cargarInterfaz(`clientes/bitacora/index`, `contenedor_principal`, {cliente_id: $cliente->id})'><i class='menu-icon mdi mdi-library-books' title='Registros en bitácora'></i>&nbsp;$cliente->bitacoras</span>
+            <span class='puntero' onClick='javascript:cargarInterfaz(`clientes/bitacora/index`, `contenedor_principal`, {cliente_id: $cliente->id})'><i class='menu-icon mdi mdi-library-books' title='Registros en bitácora'></i>&nbsp;$cliente->bitacoras - $cliente->descripcion_ultima_clasificacion</span>
         ";
         ?>
     </p>

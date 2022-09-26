@@ -85,6 +85,8 @@ Class Clientes_model extends CI_Model{
                         $filtros_having .= " OR c.email LIKE '%{$palabras[$i]}%'";
                         $filtros_having .= " OR pais LIKE '%{$palabras[$i]}%'";
                         $filtros_having .= " OR c.telefono LIKE '%{$palabras[$i]}%'";
+                        $filtros_having .= " OR ultima_clasificacion LIKE '%{$palabras[$i]}%'";
+                        $filtros_having .= " OR descripcion_ultima_clasificacion LIKE '%{$palabras[$i]}%'";
                         $filtros_having .= ") ";
 
                         if(($i + 1) < count($palabras)) $filtros_having .= " AND ";
@@ -98,11 +100,34 @@ Class Clientes_model extends CI_Model{
 
                 $sql = 
                 "SELECT
-                c.*,
-                p.nombre AS pais,
-                (SELECT COUNT(id) FROM clientes_bitacora WHERE cliente_id = c.id) bitacoras
-                FROM
-                    clientes AS c
+                    c.*,
+                    p.nombre AS pais,
+                    (SELECT COUNT(id) FROM clientes_bitacora WHERE cliente_id = c.id) bitacoras,
+                    (
+                        SELECT cbc.nombre
+                        FROM clientes_bitacora AS cb
+                        INNER JOIN clientes_bitacora_clasificaciones AS cbc ON cb.cliente_bitacora_clasificacion_id = cbc.id
+	                    WHERE cb.cliente_id = c.id
+	                    ORDER BY cb.fecha_creacion DESC
+                        LIMIT 0, 1
+	                ) ultima_clasificacion,
+                    (
+                        SELECT cbc.id 
+                        FROM clientes_bitacora AS cb
+                        INNER JOIN clientes_bitacora_clasificaciones AS cbc ON cb.cliente_bitacora_clasificacion_id = cbc.id 
+                        WHERE cb.cliente_id = c.id 
+                        ORDER BY cb.fecha_creacion DESC 
+                        LIMIT 0, 1 
+                    ) id_ultima_clasificacion,
+                    (
+                        SELECT cb.descripcion 
+                        FROM clientes_bitacora AS cb
+                        INNER JOIN clientes_bitacora_clasificaciones AS cbc ON cb.cliente_bitacora_clasificacion_id = cbc.id 
+                        WHERE cb.cliente_id = c.id 
+                        ORDER BY cb.fecha_creacion DESC 
+                        LIMIT 0, 1 
+                    ) descripcion_ultima_clasificacion
+                FROM clientes AS c
                 INNER JOIN paises AS p ON c.pais_id = p.id
                 $filtros_where
                 $filtros_having
