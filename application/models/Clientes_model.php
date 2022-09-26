@@ -112,28 +112,30 @@ Class Clientes_model extends CI_Model{
                         LIMIT 0, 1
 	                ) ultima_clasificacion,
                     (
-                        SELECT cbc.id 
+                        SELECT cbc.id
                         FROM clientes_bitacora AS cb
-                        INNER JOIN clientes_bitacora_clasificaciones AS cbc ON cb.cliente_bitacora_clasificacion_id = cbc.id 
-                        WHERE cb.cliente_id = c.id 
-                        ORDER BY cb.fecha_creacion DESC 
-                        LIMIT 0, 1 
+                        INNER JOIN clientes_bitacora_clasificaciones AS cbc ON cb.cliente_bitacora_clasificacion_id = cbc.id
+                        WHERE cb.cliente_id = c.id
+                        ORDER BY cb.fecha_creacion DESC
+                        LIMIT 0, 1
                     ) id_ultima_clasificacion,
                     (
-                        SELECT cb.descripcion 
+                        SELECT cb.descripcion
                         FROM clientes_bitacora AS cb
-                        INNER JOIN clientes_bitacora_clasificaciones AS cbc ON cb.cliente_bitacora_clasificacion_id = cbc.id 
-                        WHERE cb.cliente_id = c.id 
-                        ORDER BY cb.fecha_creacion DESC 
-                        LIMIT 0, 1 
-                    ) descripcion_ultima_clasificacion
+                        INNER JOIN clientes_bitacora_clasificaciones AS cbc ON cb.cliente_bitacora_clasificacion_id = cbc.id
+                        WHERE cb.cliente_id = c.id
+                        ORDER BY cb.fecha_creacion DESC
+                        LIMIT 0, 1
+                    ) descripcion_ultima_clasificacion,
+                    CONCAT_WS(' ',ua.nombres, ua.apellidos) usuario_asignado
                 FROM clientes AS c
-                INNER JOIN paises AS p ON c.pais_id = p.id
+                    INNER JOIN paises AS p ON c.pais_id = p.id
+                    LEFT JOIN usuarios AS ua ON c.usuario_asignado_id = ua.id
                 $filtros_where
                 $filtros_having
                 ORDER BY
                     fecha_creacion DESC,
-                    nombres
+                    c.nombres
                 $contador
                 ";
 

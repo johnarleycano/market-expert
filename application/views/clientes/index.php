@@ -63,7 +63,8 @@
             nombres: $('#nombres').val(),
             pais_id: $('#pais').val(),
             telefono: $('#telefono').val(),
-            email: $('#email').val()
+            email: $('#email').val(),
+            usuario_asignado_id: $('#usuario_asignado').val()
         }
 
         if(!clienteId) {
