@@ -17,8 +17,8 @@ foreach($registros as $cliente) {
         echo "
             <i class='puntero menu-icon mdi mdi-earth' title='País'></i>&nbsp;$cliente->pais
             <i class='puntero menu-icon mdi mdi-phone' title='Teléfono'></i>&nbsp;$cliente->telefono
-            <i class='puntero menu-icon mdi mdi-mail' title='Teléfono'></i>&nbsp;$cliente->email
-            <i class='puntero menu-icon mdi mdi-calendar' title='Teléfono'></i>&nbsp;$cliente->fecha_creacion
+            <i class='puntero menu-icon mdi mdi-mail' title='Correo electrónico'></i>&nbsp;$cliente->email
+            <i class='puntero menu-icon mdi mdi-calendar' title='Fecha de creación'></i>&nbsp;$cliente->fecha_creacion
             <i class='puntero menu-icon mdi mdi-account' title='Usuario asignado'></i>&nbsp;$cliente->usuario_asignado
             <br>
 

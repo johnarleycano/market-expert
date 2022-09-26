@@ -95,6 +95,7 @@ class Interfaces extends MY_Controller {
         $tipo = $datos['tipo'];
         $datos['fecha_creacion'] = date('Y-m-d H:i:s');
         $datos['usuario_id'] = $this->session->userdata('usuario_id');
+        
         unset($datos['tipo']);
         unset($datos['id']);
 

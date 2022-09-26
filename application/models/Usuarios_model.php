@@ -41,7 +41,7 @@ Class Usuarios_model extends CI_Model{
 
                 $sql = 
                 "SELECT
-                u.*
+                    u.*
                 FROM
                     usuarios AS u
                 $filtros_where
