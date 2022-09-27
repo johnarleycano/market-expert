@@ -14,3 +14,10 @@ CREATE TABLE `usuarios`  (
   INDEX `perfil_id`(`perfil_id`) USING BTREE,
   INDEX `activo`(`activo`) USING BTREE,
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
+
+-- 20220926 Nuevos campos para la tabla clientes
+ALTER TABLE `clientes` 
+ADD COLUMN `observaciones` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL AFTER `fecha_creacion`;
+
+ALTER TABLE `clientes` 
+ADD COLUMN `registro_web` tinyint(1) NULL DEFAULT 0 COMMENT '0: no; 1: sí' AFTER `observaciones`;

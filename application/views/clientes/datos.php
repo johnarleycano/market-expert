@@ -8,6 +8,8 @@ $registros = $this->clientes_model->obtener('clientes', $opciones);
 if(count($registros) == 0) echo '<li class="list-group-item">No se encontraron clientes.</li>';
 
 foreach($registros as $cliente) {
+    $color_registro = ($cliente->registro_web == "1") ? "info" : "" ;
+    $nombre_registro = ($cliente->registro_web == "1") ? "Registrado por la página web" : "" ; 
 ?>
     <h4 class="card-title puntero" onClick="javascript:cargarInterfaz('clientes/detalle', 'contenedor_modal', {id: <?php echo $cliente->id; ?>}, 'modal')">
         <?php echo $cliente->nombres; ?> <span class="card-description"><?php echo $cliente->ultima_clasificacion; ?></span>
@@ -23,6 +25,7 @@ foreach($registros as $cliente) {
             <br>
 
             <span class='puntero' onClick='javascript:cargarInterfaz(`clientes/bitacora/index`, `contenedor_principal`, {cliente_id: $cliente->id})'><i class='menu-icon mdi mdi-library-books' title='Registros en bitácora'></i>&nbsp;$cliente->bitacoras - $cliente->descripcion_ultima_clasificacion</span>
+            <span class='badge bg-$color_registro'>$nombre_registro</span>
         ";
         ?>
     </p>

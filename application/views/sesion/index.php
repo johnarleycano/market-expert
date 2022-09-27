@@ -20,6 +20,9 @@
                         <div class="mt-3">
                             <input type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" value="INICIAR SESION">
                         </div>
+                        <div class="mt-3">
+                            <h6>¿No tienes cuenta? <a href="<?php echo site_url('registro'); ?>" style="text-decoration:none">Regístrate</a> </h6> 
+                        </div>
                     </form>
                 </div>
             </div>
