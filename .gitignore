@@ -1,6 +1,7 @@
 # Directorios
 .vscode/
 archivos/
+ci_sessions/
 frontend/
 application/logs/
 application/config/development/
