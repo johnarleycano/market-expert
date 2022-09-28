@@ -10,16 +10,13 @@
             </li>
         </ul>
 
-        <!-- Si es administrador -->
-        <?php if($this->session->userdata('administrador') == '1') { ?>
-            <div>
-                <div class="btn-wrapper">
-                    <a href="#" class="btn btn-success text-white me-0" onClick="javascript:cargarInterfaz('clientes/bitacora/detalle', 'contenedor_modal', null, 'modal')">
-                        <i class="icon-plus"></i> Crear
-                    </a>
-                </div>
+        <div>
+            <div class="btn-wrapper">
+                <a href="#" class="btn btn-success text-white me-0" onClick="javascript:cargarInterfaz('clientes/bitacora/detalle', 'contenedor_modal', null, 'modal')">
+                    <i class="icon-plus"></i> Crear
+                </a>
             </div>
-        <?php } ?>
+        </div>
     </div>
 
     <div class="tab-content">

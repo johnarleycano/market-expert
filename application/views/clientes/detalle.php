@@ -37,15 +37,18 @@ if (isset($datos['id'])) {
             <input type="text" class="form-control" id="telefono" value="<?php if (isset($cliente)) echo $cliente->telefono; ?>">
         </div>
 
-        <div class="col-12">
-            <label for="usuario_asignado" class="form-label">Usuario asignado <b class="text-danger">*</b></label>
-            <select id="usuario_asignado" class="form-select form-select-sm">
-                <option selected disabled>Seleccione</option>
-                <?php foreach ($this->usuarios_model->obtener('usuarios') as $usuario) { ?>
-                    <option value="<?php echo $usuario->id; ?>"><?php echo "$usuario->nombres $usuario->apellidos"; ?></option>
-                <?php } ?>
-            </select>
-        </div>
+        <!-- Si es administrador -->
+        <?php if($this->session->userdata('administrador') == '1') { ?>
+            <div class="col-12">
+                <label for="usuario_asignado" class="form-label">Usuario asignado <b class="text-danger">*</b></label>
+                <select id="usuario_asignado" class="form-select form-select-sm">
+                    <option selected disabled>Seleccione</option>
+                    <?php foreach ($this->usuarios_model->obtener('usuarios') as $usuario) { ?>
+                        <option value="<?php echo $usuario->id; ?>"><?php echo "$usuario->nombres $usuario->apellidos"; ?></option>
+                    <?php } ?>
+                </select>
+            </div>
+        <?php } ?>
     </form>
 </div>
 

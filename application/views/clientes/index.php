@@ -18,9 +18,13 @@
 
         <div>
             <div class="btn-wrapper">
-                <a href="#" class="btn btn-success text-white me-0" onClick="javascript:cargarInterfaz('clientes/detalle', 'contenedor_modal', null, 'modal')">
-                    <i class="icon-plus"></i> Crear
-                </a>
+                <!-- Si es administrador -->
+                <?php if($this->session->userdata('administrador') == '1') { ?>
+                    <a href="#" class="btn btn-success text-white me-0" onClick="javascript:cargarInterfaz('clientes/detalle', 'contenedor_modal', null, 'modal')">
+                        <i class="icon-plus"></i> Crear
+                    </a>
+                <?php } ?>
+
                 <?php 
                 // if (verificar_roles($jwt, [Roles::ADMINISTRADOR])) {
                 //     echo "
@@ -64,8 +68,9 @@
             pais_id: $('#pais').val(),
             telefono: $('#telefono').val(),
             email: $('#email').val(),
-            usuario_asignado_id: $('#usuario_asignado').val()
         }
+
+        if($('#usuario_asignado')) datos.usuario_asignado_id = $('#usuario_asignado').val()
 
         if(!clienteId) {
             await consulta('crear', datos)
