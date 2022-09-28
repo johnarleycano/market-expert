@@ -9,9 +9,16 @@ Class Email_model extends CI_Model{
      * Variables globales de configuración del correo
      */
 	var $configuracion_local = array(
-		'mailtype' => 'html',
-		'charset' => 'utf-8',
-		'newline' => "\r\n"
+		'protocol' => 'smtp',
+        'smtp_host' => 'ssl://smtp.googlemail.com',
+        'smtp_user' => 'johnarleycano',
+        'smtp_pass' => 'icohttchuidoheoh',
+        'smtp_port' => 465,
+        'mailtype' => 'html',
+        'charset' => 'utf-8',
+        'newline' => "\r\n",
+        'crlf' => "\r\n",
+        'wordwrap' => TRUE
 	);
 
 	var $configuracion_web = array(
@@ -25,35 +32,26 @@ Class Email_model extends CI_Model{
 		'newline' => "\r\n"
 	);
 
-    var $nombre = 'Market Experts';
+    var $nombre = 'Market Expert';
 
     /**
      * Envío de correo electrónico
      * previamente formateado
      */
-    function enviar_mensaje($asunto, $cuerpo, $destinatarios = array(), $adjuntos = null){
-    	// Arreglo de destinatarios con copia
-    	//$correos_cc = array();
-
+    function enviar_mensaje($asunto, $cuerpo, $destinatarios = array()){
     	// Si estamos en la app local
     	if (ENVIRONMENT == "development") {
-    		//cargamos la configuración local para enviar con gmail
+    		// Cargamos la configuración local para enviar con Gmail
 			$this->email->initialize($this->configuracion_local);
 
 			// Destinatarios
-			$email = "";
+			$usuarios = ["johnarleycano@hotmail.com"];
     	} else {
     		//cargamos la configuración local para enviar con gmail
 			$this->email->initialize($this->configuracion_web);
 			
-			// Copia oculta a John
-			//$this->email->bcc(array('johnarleycano@hotmail.com'));
-			
 			// Destinatarios
-			$email = $destinatarios;
-			
-			// Correos con copia a 
-    		//array_push($correos_cc, '');
+			$usuarios = $destinatarios;
     	}
 
     	// Correo del sistema
@@ -61,12 +59,10 @@ Class Email_model extends CI_Model{
 	    
 		// Preparando el mensaje
 		$this->email->from($correo_sistema, $this->nombre); // Cabecera
-		$this->email->to($email); // Destinatarios
+		$this->email->to($usuarios); // Destinatarios
 		$this->email->subject($asunto); // Asunto
-		//$this->email->cc($correos_cc); // Copia 
-		// $this->email->set_crlf("\r\n"); 
 
-        //Se organiza la plantilla
+        // Se organiza la plantilla
 		$mensaje = file_get_contents('application/views/email/plantilla.php');
         $mensaje = str_replace('{CUERPO1}', $cuerpo[0], $mensaje);
         $mensaje = str_replace('{CUERPO2}', $cuerpo[1], $mensaje);
@@ -80,5 +76,5 @@ Class Email_model extends CI_Model{
 		return $this->email->print_debugger();
     }
 }
-/* Fin del archivo email_model.php */
-/* Ubicación: ./application/models/email_model.php */
+/* Fin del archivo Email_model.php */
+/* Ubicación: ./application/models/Email_model.php */

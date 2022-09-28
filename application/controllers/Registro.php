@@ -13,7 +13,7 @@ class Registro extends MY_Controller {
         parent::__construct();
 
         // Carga de modelos
-        $this->load->model(['configuracion_model','clientes_model']);
+        $this->load->model(['configuracion_model', 'clientes_model']);
     }
 
     public function index()
@@ -29,12 +29,13 @@ class Registro extends MY_Controller {
 
     function crear()
     {
-        $tipo = 'clientes';
         $datos = json_decode($this->input->post('datos'), true);
         $datos['fecha_creacion'] = date('Y-m-d H:i:s');
+        $tipo = $datos['tipo'];
         unset($datos['tipo']);
 
         print json_encode(['resultado' => $this->clientes_model->crear($tipo,$datos)]);
     }
-}/* Fin del archivo Registro.php */
+}
+/* Fin del archivo Registro.php */
 /* Ubicación: ./application/controllers/Registro.php */

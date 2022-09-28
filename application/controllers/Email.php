@@ -13,54 +13,33 @@ Class Email extends CI_Controller{
 		parent::__construct();
 
 		//Carga de modelos y librerías
-		$this->load->model(array("email_model","clientes_model"));
+		$this->load->model(array("email_model", "clientes_model"));
 		$this->load->library(array('email'));
-	}//Fin construct()
+	}
 
-	function enviar(){
-		
+	function enviar() {
         // Datos recibidos por post
-        $datos = json_decode($this->input->post('datos'), true);
-        $tipo = json_decode($this->input->post('tipo'), true);
+        $id = $this->input->post('id');
+        $tipo = $this->input->post('tipo');
 
 		// Suiche
 		switch ($tipo) {
-			case 'cliente':
-				// $nombres = $datos['nombres'];
-				// $pais = $datos['pais_id'];
-				// $email = $datos['email'];
-				// $telefono = $datos['telefono'];
-				// $observaciones = $datos['observaciones'];
+			case 'registro_cliente':
+				$cliente = $this->clientes_model->obtener('clientes', ['id' => $id]);
 
-				$email = '';
 				// Asunto
-				$asunto = "Usuario creado";
+				$asunto = "Registro exitoso";
 
 				// Cuerpo del mensaje
-				$mensaje1 = "Se creo el usuario en la página market experts con los siguientes datos:<br><br>";
-
-				$mensaje2 = "<b>Se creo el usuario correctamente </b><br>";
-				// $mensaje2 .= "<hr>";
-				// $mensaje2 .= "<b>Pais: </b>$pais<br>";
-				// $mensaje2 .= "<b>Correo: </b>$email<br>";
-				// $mensaje2 .= "<b>Telefono: </b>$telefono<br><br>";
-				// $mensaje2 .= "<hr>";
-				// $mensaje2 .= "<b>Observaciones:</b>$observaciones<br><br>";
-
-				$mensaje3 = "Market experts";
+				$mensaje1 = "Tu registro en Market Expert ha sido exitoso<br><br>";
+				$mensaje2 = "<hr>";
+				$mensaje3 = "Market expert";
 					
-				// Si el entorno es de desarrollo
-				if(ENVIRONMENT == "development") {
-					$mensaje1 = "Market experts";
-
-				}
-
 				// Se envía el correo electrónico
-				echo $this->email_model->enviar_mensaje($asunto, array($mensaje1, $mensaje2, $mensaje3),$email);
+				echo $this->email_model->enviar_mensaje($asunto, array($mensaje1, $mensaje2, $mensaje3), $cliente->email);
 			break;
-                 
-        } // suiche
-	}// enviar
+        }
+	}
 } 
 /* Fin del archivo email.php */
 /* Ubicación: ./application/controllers/email.php */

@@ -117,6 +117,18 @@ convertirFecha = (fecha, hora = false) => {
     return `${anio}-${mes}-${dia}`
 }
 
+enviarEmail = async(tipo, id = null) => {
+    const resultado = $.ajax({
+        url: `${$('#site_url').val()}email/enviar`,
+        type: 'POST',
+        dataType: 'HTML',
+        data: {tipo: tipo, datos: id},
+        async: true,
+    })
+    
+    return resultado
+}
+
 generarReporte = (tipo, datos) => {
     switch (tipo) {
         case 'x/x':

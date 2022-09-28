@@ -7,7 +7,7 @@
                         <img src="<?php echo base_url(); ?>images/logo.png" alt="logo">
                     </div>
 
-                    <h4>Regístrese ahora</h4>
+                    <h4>Regístrate ahora</h4>
                     <form class="pt-3" id="form">
                         <div class="col-12">
                             <label for="nombre_cliente" class="form-label">Nombres <b class="text-danger">*</b></label>
@@ -49,6 +49,12 @@
 
 <script type="text/javascript">
     $().ready(() => {
+        $("#pais").select2({
+            dropdownParent: $('.page-body-wrapper'),
+            width: '100%',
+            theme: 'bootstrap-5'
+        })
+
         $('form').submit(e => {
             e.preventDefault()
 
@@ -69,7 +75,7 @@
 			if (!validarCamposObligatorios(campos)) return false
 
             let datos = {
-                tipo: 'cliente',
+                tipo: 'clientes',
                 nombres: nombreCliente.val(),
                 pais_id: pais.val(),
                 email: email.val(),
@@ -82,11 +88,10 @@
             promesa("<?php echo site_url('registro/crear'); ?>", datos)
             .then(cliente => {
                 if(cliente) {
-                    let formulario = document.getElementById('form');
-
-                    promesa("<?php echo site_url('email/enviar'); ?>", datos)
-                    mostrarNotificacion('exito', 'El registro se creó correctamente', 10000) 
-                    formulario.reset();
+                    let formulario = document.getElementById('form')
+                    formulario.reset()
+                    enviarEmail('registro_cliente', cliente.id)
+                    mostrarNotificacion('exito', 'Tu registro se creó correctamente', 10000) 
                 }
             }).catch(error => console.error(error)) 
         })
