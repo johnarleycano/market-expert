@@ -146,9 +146,6 @@
 																															<td valign="top" align="left" name="tblCell" style="padding: 15px 20px; font-family: Arial, Helvetica, sans-serif; font-size: 14px; font-weight: 400; color: rgb(253, 56, 56); text-align: left;" class="tblCell">
 																																<div style="line-height: 150%; text-align: right;">
 																																	<span style="font-size: 12px; font-family: 'Courier New', Courier; color: #ffffff; line-height: 150%;">
-																																		<!-- <span style="text-decoration: none; line-height: 150%;">
-																																			www.precisionmetrologica.com
-																																		</span> -->
 																																	</span>
 																																</div>
 																															</td>
@@ -596,17 +593,6 @@
 																													<tbody>
 																														<tr>
 																															<td valign="top" name="bmeSocialTD" class="bmeSocialTD">--><!--[if gte mso 6]></td><td align="left" valign="top"><![endif]-->    
-																																<!--<table cellspacing="0" cellpadding="0" border="0" class="bmeFollowItem" type="facebook" style="float: left; display: block;" align="left">
-																																	<tbody>
-																																		<tr>
-																																			<td align="left" class="bmeFollowItemIcon" gutter="20" width="24" style="padding-right:20px;height:20px;">    
-																																				<a href="https://www.facebook.com/Precisi%C3%B3n-Metrol%C3%B3gica-377249522356434" target=_blank  style="display: inline-block;background-color: rgb(66, 103, 678);border-radius: 0px;border-style: none; border-width: 0px; border-color: rgba(0, 0, 0, 0);" target="_blank">
-																																					<img src="https://ui.benchmarkemail.com/images/editor/socialicons/fb_btn.png" alt="Facebook" style="display: block; max-width: 114px;" border="0" width="24" height="24">
-																																				</a>
-																																			</td>
-																																		</tr>
-																																	</tbody>    
-																																</table>--><!--[if gte mso 6]></td><td align="left" valign="top"><![endif]-->    
 																																<!-- <table cellspacing="0" cellpadding="0" border="0" class="bmeFollowItem" type="twitter" style="float: left; display: block;" align="left">
 																																	<tbody>
 																																		<tr>
@@ -708,9 +694,8 @@
 																									<!-- <span href=http://benchmarkemail.benchurl.com/c/su?e=8E4B52&c=91CEA&t=1&l=7889F345&email=hL2iimIGZvj2QooSzVze1t7P%2FZjRPRKrj2c0%2B7DqUhU%3D&relid=>
 																									     	<img src="https://www.benchmarkemail.com/images/verified.png" alt="Unsubscribe from all mailings" title="Unsubscribe from all mailings" border="0">
 																									     </span> -->     
-																									<!-- <a class=bmefootertext  target=_new  href="http://www.precisionmetrologica.com"  style="color:inherit;text-decoration:underline;">SMIT Software</a>   |      -->
-																									<a class=bmefootertext  target=_new  href="https://www.precisionmetrologica.com/"  style="color:inherit;text-decoration:underline;">SMIT SOFTWARE | Precisión Metrológica</a>   |      
-																									<a class=bmefootertext  target=_new  href="mailto:info@precisionmetrologica.com"  style="color:inherit;text-decoration:underline;">info@precisionmetrologica.com</a> | <a class=bmefootertext  target=_new  href="{URL_CANCELAR_SUSCRIPCION}"  style="color:inherit;text-decoration:underline;">No quiero recibir más las alertas</a>
+																									<a class=bmefootertext  target=_new  href="https://market-expert.net/"  style="color:inherit;text-decoration:underline;">APP | Market Expert</a>   |      
+																									<a class=bmefootertext  target=_new  href="mailto:info@market-expert.net"  style="color:inherit;text-decoration:underline;">info@market-expert.net</a>
 																									<br>
 																								</span>
 																							</td>
