@@ -3,6 +3,7 @@ $opciones = [
     'contador'=> $datos['contador'],
 ];
 if($datos['busqueda']) $opciones['busqueda'] = $datos['busqueda'];
+if(isset($datos['id_clasificacion'])) $opciones['id_clasificacion'] = $datos['id_clasificacion'];
 
 $registros = $this->clientes_model->obtener('clientes', $opciones);
 if(count($registros) == 0) echo '<li class="list-group-item">No se encontraron clientes.</li>';

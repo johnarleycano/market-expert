@@ -40,6 +40,18 @@
                 ?>
             </div>
         </div>
+        <!-- Clasificaciones -->
+        <div id="cont_clasificaciones" class="col-lg-3 col-md-4 col-sm-13">
+            <div class="form-group">
+                <select id="clasificacion_filtro" class="form-control" style="width: 100%;">
+                    <option value="">Todas las clasificaciones</option>
+                                
+                    <?php foreach ($this->configuracion_model->obtener('clientes_bitacora_clasificaciones') as $clasificacion) { ?>
+                        <option value="<?php echo $clasificacion->id; ?>"><?php echo $clasificacion->nombre; ?></option>
+                    <?php } ?>  
+                </select>
+            </div>
+        </div>
     </div>
 
     <div class="tab-content">
@@ -86,11 +98,15 @@
     listarClientes = () => {
         if($('#buscar').val() == "" && localStorage.marketExperts_buscarCliente) $('#buscar').val(localStorage.marketExperts_buscarCliente)
 
+        // Si tiene una clasificación seleccionada, se pone
+        if(localStorage.filtro_clasificaciones) $("#clasificacion_filtro").val(localStorage.filtro_clasificaciones)
+
         localStorage.marketExperts_contador = 0
 
         let datos = {
             contador: localStorage.marketExperts_contador,
             busqueda: $('#buscar').val(),
+            id_clasificacion: localStorage.filtro_clasificaciones,
             titulo: 'Clientes',
             subtitulo: 'Gestión',
             descripcion: 'Gestión de clientes',
@@ -104,6 +120,16 @@
 
         $('#buscar').keyup(() => {
             localStorage.marketExperts_buscarCliente = $('#buscar').val()
+
+            listarClientes()
+        })
+
+        $("#clasificacion_filtro").change(() => {
+            if($("#clasificacion_filtro").val() != '') {
+                localStorage.filtro_clasificaciones = $("#clasificacion_filtro").val()
+            } else {
+                localStorage.removeItem('filtro_clasificaciones')
+            }
 
             listarClientes()
         })
