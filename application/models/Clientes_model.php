@@ -128,6 +128,19 @@ Class Clientes_model extends CI_Model{
                         ORDER BY cb.fecha_creacion DESC
                         LIMIT 0, 1
                     ) descripcion_ultima_clasificacion,
+                    (
+                    SELECT
+                        cb.fecha_creacion 
+                    FROM
+                        clientes_bitacora AS cb
+                        INNER JOIN clientes_bitacora_clasificaciones AS cbc ON cb.cliente_bitacora_clasificacion_id = cbc.id 
+                    WHERE
+                        cb.cliente_id = c.id 
+                    ORDER BY
+                        cb.fecha_creacion DESC 
+                        LIMIT 0,
+                        1 
+                    ) fecha_ultima_clasificacion,
                     CONCAT_WS(' ',ua.nombres, ua.apellidos) usuario_asignado
                 FROM clientes AS c
                     INNER JOIN paises AS p ON c.pais_id = p.id
