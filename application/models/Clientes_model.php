@@ -70,15 +70,14 @@ Class Clientes_model extends CI_Model{
             break;
 
             case 'clientes':
-                $clasificacion = "";
                 $contador = (isset($datos['contador'])) ? "LIMIT {$datos['contador']}, 20" : '' ;
                 $filtros_where = "WHERE c.id";
-                $filtros_having = "";
+                $filtros_having = "HAVING c.id";
 
                 if (isset($datos['busqueda'])) {
                     $palabras = explode(' ', trim($datos['busqueda']));
 
-                    $filtros_having .= "HAVING";
+                    $filtros_having .= " AND ";
 
                     for ($i=0; $i < count($palabras); $i++) {
                         $filtros_having .= " (";
@@ -95,7 +94,7 @@ Class Clientes_model extends CI_Model{
                 }
 
                 if(isset($datos['id'])) $filtros_where .= " AND c.id = {$datos['id']} ";
-                if(isset($datos["id_clasificacion"])) $clasificacion = " HAVING id_ultima_clasificacion = '{$datos["id_clasificacion"]}' ";
+                if(isset($datos["id_clasificacion"])) $filtros_having .= " AND id_ultima_clasificacion = '{$datos["id_clasificacion"]}' ";
 
                 // Si no es administrador, podrá ver los clientes asignados al sistema y a él mismo
                 if($this->session->userdata('administrador') == '0') $filtros_where .= " AND (c.usuario_asignado_id = 1 OR c.usuario_asignado_id = {$this->session->userdata('usuario_id')})";
@@ -135,9 +134,8 @@ Class Clientes_model extends CI_Model{
                     LEFT JOIN usuarios AS ua ON c.usuario_asignado_id = ua.id
                 $filtros_where
                 $filtros_having
-                $clasificacion
                 ORDER BY
-                    fecha_creacion DESC,
+                    fecha_ultima_clasificacion,
                     c.nombres
                 $contador
                 ";
