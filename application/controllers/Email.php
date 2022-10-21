@@ -21,6 +21,7 @@ Class Email extends CI_Controller{
         // Datos recibidos por post
         $id = $this->input->post('id');
         $tipo = $this->input->post('tipo');
+		$datos = $this->input->post('datos');
 
 		// Suiche
 		switch ($tipo) {
@@ -32,6 +33,21 @@ Class Email extends CI_Controller{
 
 				// Cuerpo del mensaje
 				$mensaje1 = "Tu registro en Market Expert ha sido exitoso<br><br>";
+				$mensaje2 = "<hr>";
+				$mensaje3 = "Market expert";
+					
+				// Se envía el correo electrónico
+				echo $this->email_model->enviar_mensaje($asunto, array($mensaje1, $mensaje2, $mensaje3), $cliente->email);
+			break;
+
+			case 'mensaje':
+				$cliente = $this->clientes_model->obtener('clientes', ['id' => $datos['id']]);
+
+				// Asunto
+				$asunto = "Nuevo mensaje";
+
+				// Cuerpo del mensaje
+				$mensaje1 = $datos['mensaje'];
 				$mensaje2 = "<hr>";
 				$mensaje3 = "Market expert";
 					
