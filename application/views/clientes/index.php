@@ -23,6 +23,10 @@
                     <a href="#" class="btn btn-success text-white me-0" onClick="javascript:cargarInterfaz('clientes/detalle', 'contenedor_modal', null, 'modal')">
                         <i class="icon-plus"></i> Crear
                     </a>
+
+                    <a href="#" class="btn btn-success text-white me-0" onClick="javascript:cargarInterfaz('clientes/adicional', 'contenedor_modal', null, 'modal')">
+                        <i class="mdi mdi-repeat"></i> Clasificación masiva
+                    </a>
                 <?php } ?>
 
                 <?php 

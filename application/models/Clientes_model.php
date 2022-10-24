@@ -3,7 +3,7 @@ Class Clientes_model extends CI_Model{
     function actualizar($tabla, $id, $datos){
         return $this->db->where('id', $id)->update($tabla, $datos);
     }
-    
+
     function crear($tipo, $datos){
         switch ($tipo) {
             case 'clientes':
@@ -14,6 +14,10 @@ Class Clientes_model extends CI_Model{
             case 'clientes_bitacora':
                 $this->db->insert($tipo, $datos);
                 return $this->db->insert_id();
+            break;
+
+            case 'clientes_bitacoras_clasificaciones':
+                return $this->db->insert_batch('clientes_bitacora', $datos);
             break;
         }
     }
