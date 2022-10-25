@@ -85,6 +85,7 @@ class Interfaces extends MY_Controller {
         $datos = json_decode($this->input->post('datos'), true);
 
         $nuevas_clasificaciones = [];
+        $usuarios_asignados = [];
         $respuesta = [];
 
         // Se obtienen los clientes con la clasificación anterior seleccionada
@@ -100,11 +101,18 @@ class Interfaces extends MY_Controller {
                     'cliente_bitacora_clasificacion_id' => $datos['clasificacion_nueva'],
                     'usuario_id' => $this->session->userdata('usuario_id')
                 ]);
+
+                array_push($usuarios_asignados, [
+                    'id' => $cliente->id,
+                    'usuario_asignado_id' => $datos['usuario_asignado']
+                ]);
             }
 
-            $respuesta['resultado'] = $this->clientes_model->crear('clientes_bitacoras_clasificaciones', $nuevas_clasificaciones);
+            $respuesta['clasificaciones'] = $this->clientes_model->crear('clientes_bitacoras_clasificaciones', $nuevas_clasificaciones);
+            $respuesta['clientes'] = $this->clientes_model->actualizar('asignar_usuarios_clientes', 'id', $usuarios_asignados);
         } else {
-            $respuesta['resultado'] = 0;
+            $respuesta['clasificaciones'] = 0;
+            $respuesta['clientes'] = 0;
         }
 
         print json_encode($respuesta);

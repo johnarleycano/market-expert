@@ -24,6 +24,15 @@
                 <?php } ?>
             </select>
         </div>
+        <div class="col-12 col-md-12 col-lg-12 form-group">
+            <label for="usuario_asignado" class="form-label">Asignar usuario <b class="text-danger">*</b></label>
+            <select id="usuario_asignado" class="form-select form-select-sm">
+                <option value="">Seleccione</option>
+                <?php foreach ($this->usuarios_model->obtener('usuarios') as $usuario) { ?>
+                    <option value="<?php echo $usuario->id; ?>"><?php echo "$usuario->nombres $usuario->apellidos"; ?></option>
+                <?php } ?>
+            </select>
+        </div>
     </form>
 </div>
 
@@ -36,7 +45,8 @@
     cambiarClasificacion = async () => {
         let camposObligatorios = [
             $('#clasificacion_anterior'),
-            $('#clasificacion_nueva')
+            $('#clasificacion_nueva'),
+            $('#usuario_asignado')
         ]
 
         // Se validan los datos obligatorios
@@ -44,14 +54,15 @@
 
         let datos = {
             clasificacion_anterior: $('#clasificacion_anterior').val(),
-            clasificacion_nueva: $('#clasificacion_nueva').val()
+            clasificacion_nueva: $('#clasificacion_nueva').val(),
+            usuario_asignado: $('#usuario_asignado').val()
         }
 
         // Se realiza el cambio de clasificación
         let respuesta = await consulta('cambiar_clasificacion_clientes', datos)
 
         // Al cambiar la clasificación de varios clientes
-        if (parseInt(respuesta.resultado) > 0) {
+        if (parseInt(respuesta.clasificaciones) > 0 && parseInt(respuesta.clientes) > 0) {
             mostrarNotificacion('exito', 'Se actualizaron los datos correctamente', 5000)
             cerrarModal()
             listarClientes()

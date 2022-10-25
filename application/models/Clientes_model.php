@@ -1,7 +1,15 @@
 <?php
 Class Clientes_model extends CI_Model{
     function actualizar($tabla, $id, $datos){
-        return $this->db->where('id', $id)->update($tabla, $datos);
+        switch ($tabla) {
+            case 'asignar_usuarios_clientes':
+                return $this->db->update_batch('clientes', $datos, $id);
+            break;
+
+            default:
+                return $this->db->where('id', $id)->update($tabla, $datos);
+            break;
+        }
     }
 
     function crear($tipo, $datos){
