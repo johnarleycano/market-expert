@@ -59,4 +59,30 @@
             mostrarNotificacion('alerta', 'Debe seleccionar una clasificación que los clientes tengan asignada.', 10000)
         }
     }
+
+    /**
+     *  Para no seleccionar la misma clasificación en las dos listas desplegables
+     *  se realiza la validación para desactivar la opción en la lista
+     *  que aun no ha sido seleccionada y aplica en viceversa
+     */
+    validarSeleccionClasificacion = (activo, inactivo) => {
+        const opcionActiva = $(`#${activo} option:selected`)
+
+        for (let opcionInactiva of $(`#${inactivo}`)[0]) {
+            if ($(opcionActiva).val() === $(opcionInactiva).val()) $(opcionInactiva).attr('disabled', true)
+            if ($(opcionActiva).val() !== $(opcionInactiva).val()) $(opcionInactiva).removeAttr('disabled', true)
+        }
+    }
+
+    $().ready(() => {
+        // Al seleccionar la clasificación anterior
+        $('#clasificacion_anterior').change(() => {
+            validarSeleccionClasificacion('clasificacion_anterior', 'clasificacion_nueva')
+        })
+
+        // Al seleccionar la clasificación nueva
+        $('#clasificacion_nueva').change(() => {
+            validarSeleccionClasificacion('clasificacion_nueva', 'clasificacion_anterior')
+        })
+    })
 </script>
