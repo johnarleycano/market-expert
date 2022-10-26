@@ -33,13 +33,16 @@ foreach($registros as $cliente) {
                 ?>
             </p>
         </div>
-        <div class="col-12 col-md-2 col-lg-2">
-            <div class="d-flex align-items-center h-100">
-                <button type="button" class="btn btn-inverse-dark btn-icon btn-sm" title="Nuevo mensaje" onClick="javascript:cargarInterfaz('clientes/mensaje', 'contenedor_modal', {cliente_id: <?php echo $cliente->id; ?>}, 'modal')">
-                    <i class="mdi mdi-message-text-outline"></i>
-                </button>
+
+        <?php if ($this->session->userdata('administrador') == '1') { ?>
+            <div class="col-12 col-md-2 col-lg-2">
+                <div class="d-flex align-items-center h-100">
+                    <button type="button" class="btn btn-inverse-dark btn-icon btn-sm" title="Nuevo mensaje" onClick="javascript:cargarInterfaz('clientes/mensaje', 'contenedor_modal', {cliente_id: <?php echo $cliente->id; ?>}, 'modal')">
+                        <i class="mdi mdi-message-text-outline"></i>
+                    </button>
+                </div>
             </div>
-        </div>
+        <?php } ?>
     </div>
 
     <hr class="divisor">
