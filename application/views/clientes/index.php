@@ -24,8 +24,12 @@
                         <i class="icon-plus"></i> Crear
                     </a>
 
-                    <a href="#" class="btn btn-success text-white me-0" onClick="javascript:cargarInterfaz('clientes/adicional', 'contenedor_modal', null, 'modal')">
+                    <a href="#" class="btn btn-success text-white me-0" onClick="javascript:cargarInterfaz('clientes/clasificacion', 'contenedor_modal', null, 'modal')">
                         <i class="mdi mdi-repeat"></i> Clasificación masiva
+                    </a>
+
+                    <a href="#" class="btn btn-success text-white me-0" onClick="javascript:cargarInterfaz('clientes/usuarios', 'contenedor_modal', null, 'modal')">
+                        <i class="mdi mdi-repeat"></i> Asignación masiva usuarios
                     </a>
                 <?php } ?>
 
