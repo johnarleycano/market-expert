@@ -70,6 +70,24 @@
 <div id="contenedor_clientes" class="contenedor_registros"></div>
 
 <script type="text/javascript">
+    enviarMensajeCorreo = async () => {
+        const clienteId = $('#cliente_id').val()
+        let camposObligatorios = [$('#nuevo_mensaje')]
+
+        // Se validan los datos obligatorios
+        if (!validarCamposObligatorios(camposObligatorios)) return false
+
+        let datos = {
+            id: clienteId,
+            mensaje: $('#nuevo_mensaje').val()
+        }
+
+        // Se realiza el envio del correo con el mensaje
+        enviarEmail('mensaje', datos)
+        mostrarNotificacion('exito', 'El mensaje se ha enviado correctamente', 10000) 
+        cerrarModal()
+    }
+
     guardarCliente = async() => {
         let clienteId = $('#cliente_id').val()
 
