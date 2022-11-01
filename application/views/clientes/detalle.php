@@ -26,11 +26,13 @@ if (isset($datos['id'])) {
                 <?php } ?>
             </select>
         </div>
-
-        <div class="col-12">
-            <label for="email" class="form-label">Correo electrónico <b class="text-danger">*</b></label>
-            <input type="text" class="form-control" id="email" value="<?php if (isset($cliente)) echo $cliente->email; ?>">
-        </div>
+        
+        <?php if($this->session->userdata('administrador') == '1') { ?>
+            <div class="col-12">
+                <label for="email" class="form-label">Correo electrónico <b class="text-danger">*</b></label>
+                <input type="text" class="form-control" id="email" value="<?php if (isset($cliente)) echo $cliente->email; ?>">
+            </div>
+		<?php } ?>
 
         <div class="col-12">
             <label for="telefono" class="form-label">Teléfono <b class="text-danger">*</b></label>

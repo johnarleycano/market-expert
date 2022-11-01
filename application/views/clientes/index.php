@@ -95,8 +95,10 @@
             $('#nombres'),
             $('#pais'),
             $('#telefono'),
-            $('#email')
+            
         ]
+
+        if($('#administrador').val() == 1) camposObligatorios.push($('#email'))
 
         if (!validarCamposObligatorios(camposObligatorios)) return false
         
@@ -105,10 +107,10 @@
             nombres: $('#nombres').val(),
             pais_id: $('#pais').val(),
             telefono: $('#telefono').val(),
-            email: $('#email').val(),
         }
 
         if($('#usuario_asignado')) datos.usuario_asignado_id = $('#usuario_asignado').val()
+        if($('#administrador').val() == 1) datos.email = $('#email').val()
 
         if(!clienteId) {
             await consulta('crear', datos)
